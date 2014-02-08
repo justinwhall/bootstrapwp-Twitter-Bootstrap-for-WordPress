@@ -8,7 +8,7 @@
 get_header(); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="span12">
             <?php if (function_exists('bootstrapwp_breadcrumbs')) {
                 bootstrapwp_breadcrumbs();
             } ?>
@@ -16,7 +16,7 @@ get_header(); ?>
     </div><!--/.row -->
 
 	<div class="row content">
-        <div class="col-md-8">
+        <div class="span8">
             <?php if (have_posts()) : ?>
                  <header class="post-title">
                      <h1><?php printf( __('Search Results for: %s', 'bootstrapwp'),'<span>' . get_search_query() . '</span>'); ?></h1>
@@ -34,14 +34,14 @@ get_header(); ?>
                     <div class="row">
                         <?php // Post thumbnail conditional display.
                         if ( bootstrapwp_autoset_featured_img() !== false ) : ?>
-                            <div class="col-md-2">
+                            <div class="span2">
                                 <a href="<?php the_permalink(); ?>" title="<?php  the_title_attribute( 'echo=0' ); ?>">
                                     <?php echo bootstrapwp_autoset_featured_img(); ?>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="span6">
                         <?php else : ?>
-                            <div class="col-md-8">
+                            <div class="span8">
                         <?php endif; ?>
                                 <?php the_excerpt(); ?>
                             </div>
@@ -53,7 +53,7 @@ get_header(); ?>
 
             <?php else : ?>
             	<div class="row content">
-                    <div class="col-md-8">
+                    <div class="span8">
                         <header class="post-title">
                             <h1><?php _e('No Results Found', 'bootstrapwp'); ?></h1>
                         </header>

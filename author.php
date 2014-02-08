@@ -13,7 +13,7 @@ get_header(); ?>
 
 	<div class="container">
 		<div class="row">
-            <div class="col-md-12">
+            <div class="span12">
                 <?php if (function_exists('bootstrapwp_breadcrumbs')) {
                 bootstrapwp_breadcrumbs();
             } ?>
@@ -21,7 +21,7 @@ get_header(); ?>
         </div><!--/.row -->
 
 		<div class="row content">
-			<div class="col-md-8">
+			<div class="span8">
                 <header class="subhead" id="overview">
                     <h1 class="page-title author"><?php printf(
                         __('Author Archives: %s', 'bootstrapwp'),
@@ -44,14 +44,14 @@ get_header(); ?>
                         <div class="row">
                             <?php // Post thumbnail conditional display.
                             if ( bootstrapwp_autoset_featured_img() !== false ) : ?>
-                                <div class="col-md-2">
+                                <div class="span2">
                                     <a href="<?php the_permalink(); ?>" title="<?php  the_title_attribute( 'echo=0' ); ?>">
                                         <?php echo bootstrapwp_autoset_featured_img(); ?>
                                     </a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="span6">
                             <?php else : ?>
-                                <div class="col-md-8">
+                                <div class="span8">
                             <?php endif; ?>
                                     <?php the_excerpt(); ?>
                                 </div>

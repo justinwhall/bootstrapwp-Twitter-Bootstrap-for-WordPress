@@ -7,44 +7,28 @@
  * @subpackage BootstrapWP
  */
 get_header(); ?>
-<div class="container">
+<?php while (have_posts()) : the_post(); ?>
 
-	<?php get_template_part( 'partials/breadcrumbs' ); ?>
+  <div class="container">
+    <div class="row">
+        <div class="span12">
+            <?php if (function_exists('bootstrapwp_breadcrumbs')) {
+            bootstrapwp_breadcrumbs();
+        } ?>
+        </div><!--/.span12 -->
+    </div><!--/.row -->
 
-	<div class="row">
-		<div class="col-md-8">
+    <header class="page-title">
+        <h1><?php the_title();?></h1>
+    </header>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+  <div class="row content">
+    <div class="span8">
+        <?php the_content(); ?>
+        <?php wp_link_pages( array('before' => '<div class="page-links">' . __('Pages:', 'bootstrapwp'), 'after' => '</div>')); ?>
+        <?php edit_post_link(__('Edit', 'bootstrapwp'), '<span class="edit-link">', '</span>'); ?>
+        <?php endwhile; // end of the loop. ?>
+    </div><!-- /.span8 -->
 
-				<div <?php post_class(); ?>>
-					<div class="page-header">
-						<h1><?php the_title();?></h1>
-					</div>
-
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div>
-
-					<?php edit_post_link(__('Edit', 'bootstrapwp'), '<button class="btn btn-default">', '</button>'); ?>
-
-					<hr />
-
-					<?php wp_link_pages( array('before' => '<div class="page-links">' . __('Pages:', 'bootstrapwp'), 'after' => '</div>')); ?>
-
-					<?php if ( comments_open() || get_comments_number() ) :
-						// display comments template.
-						comments_template();
-					endif; ?>
-
-				</div>
-
-			<?php endwhile; // end of the loop. ?>
-
-		</div>
-
-		<?php get_sidebar(); ?>
-
-	</div>
-</div>
-
-<?php get_footer(); ?>
+    <?php get_sidebar(); ?>
+    <?php get_footer(); ?>
